@@ -41,6 +41,8 @@ target/
 *.iws
 *.iml
 *.ipr
+#jrebel
+rebel.xml
 
 ### VS Code ###
 .vscode/

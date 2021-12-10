@@ -2,6 +2,11 @@
  * Created by zmzhou on 2021/2/24 16:50
  */
 
+window.SITE_CONFIG = {};
+//项目webContext访问路径
+window.SITE_CONFIG['apiUrl'] = '/web-shell';
+
+
 /**
  * 加密
  * @param content 加密内容
@@ -31,7 +36,7 @@ function uploadFile() {
     //获取form数据
     let formData = new FormData(document.querySelector("#upload_form"));
     $.ajax({
-        url: "/sftp/upload",
+        url: window.SITE_CONFIG['apiUrl']+"/sftp/upload",
         type: "POST",
         data: formData,
         processData: false,  // 不处理数据

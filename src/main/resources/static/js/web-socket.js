@@ -1,6 +1,7 @@
+
+
 function WebSocketClient() {
 }
-
 /**
  * 根据location路径生成WebSocket地址
  * @returns {string} WebSocket地址
@@ -10,7 +11,7 @@ WebSocketClient.prototype.getWebSocketUrl = function () {
     if (window.location.protocol === 'https:') {
         protocol = 'wss://';
     }
-    return protocol + window.location.host + '/shell';
+    return protocol + window.location.host + window.SITE_CONFIG['apiUrl'] + '/shell';
 }
 /**
  * 连接WebSocket

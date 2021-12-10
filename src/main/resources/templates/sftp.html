@@ -62,7 +62,7 @@ $(function () {
     })
     function getFileTree(instance, selectedNode) {
         $.ajax({
-            url : "/sftp/getFileTree",
+            url : window.SITE_CONFIG['apiUrl']+"/sftp/getFileTree",
             dataType : "json",
             data: { 'path': selectedNode.id },
             type : "get",
@@ -136,7 +136,7 @@ $(function () {
             let file = tree.get_node(val)
             // 双击 除文件夹外都下载
             if (file && "jstree-folder" !== file.icon) {
-                window.open(window.location.origin + "/sftp/download?path=" + val, '_blank')
+                window.open(window.location.origin + window.SITE_CONFIG['apiUrl'] + "/sftp/download?path=" + val, '_blank')
             }
         });
 
@@ -145,7 +145,7 @@ $(function () {
             let val = $(this).attr("value");
             if(window.confirm('你确定要删除“' + val + '”吗？')){
                 $.ajax({
-                    url : "/sftp",
+                    url : window.SITE_CONFIG['apiUrl']+"/sftp",
                     type : "delete",
                     dataType : "json",
                     data: { path: val },
@@ -178,7 +178,7 @@ $(function () {
             'check_callback': true,
             'data' : function (obj, callback){
                 $.ajax({
-                    url : "/sftp/getFileTree",
+                    url : window.SITE_CONFIG['apiUrl']+"/sftp/getFileTree",
                     dataType : "json",
                     data: { path: '/' },
                     type : "get",
